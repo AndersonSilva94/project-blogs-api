@@ -5,10 +5,9 @@ module.exports = {
     const AddUserId = queryInterface.addColumn('BlogPosts', 'userId', {
       type: Sequelize.INTEGER,
       allowNull: false,
-      field: 'user_id',
       references: {
         model: 'Users',
-        key: 'user_id',
+        key: 'id',
       },
       onUpdate: 'CASCADE',
       onDelete: 'CASCADE',
