@@ -1,6 +1,6 @@
 const { User } = require('../models');
 const generateToken = require('../utils/generateToken');
-const { CREATED } = require('../utils/statusSuccess');
+const { CREATED, OK_STATUS } = require('../utils/statusSuccess');
 const { validateCreateUser } = require('../validations');
 
 const createUser = async (obj) => {
@@ -11,6 +11,13 @@ const createUser = async (obj) => {
   return { status: CREATED, message: token };
 };
 
+const getAllUsers = async () => {
+  const getUsers = await User.findAll();
+
+  return { status: OK_STATUS, message: getUsers };
+};
+
 module.exports = {
   createUser,
+  getAllUsers,
 };
