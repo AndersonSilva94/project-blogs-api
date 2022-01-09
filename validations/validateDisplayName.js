@@ -1,7 +1,7 @@
 const Joi = require('joi');
 const { invalidDisplayName } = require('../utils/messages');
 
-const validateDisplayName = async (displayName) => {
+const validateDisplayName = (displayName) => {
   const schema = Joi.object({
     displayName: Joi.string().not().empty().min(8),
   });
