@@ -1,9 +1,7 @@
-const {
-  validateDisplayName,
-  validateEmail,
-  validatePassword,
-  verifyEmailAlreadyExists,
-} = require('.');
+const validateDisplayName = require('./validateDisplayName');
+const validateEmail = require('./validateEmail');
+const validatePassword = require('./validatePassword');
+const verifyEmailAlreadyExists = require('./verifyEmailAlreadyExists');
 
 const validateCreateUser = async (obj) => {
   const { displayName, email, password } = obj;
