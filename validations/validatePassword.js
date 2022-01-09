@@ -1,6 +1,6 @@
 const { invalidLengthPassword, emptyPassword } = require('../utils/messages');
 
-const validateEmail = (password) => {
+const validatePassword = (password) => {
   if (password.length !== 6) throw invalidLengthPassword;
 
   if (!password) throw emptyPassword;
@@ -8,4 +8,4 @@ const validateEmail = (password) => {
   return password;
 };
 
-module.exports = validateEmail;
+module.exports = validatePassword;
