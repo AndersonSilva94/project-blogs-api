@@ -11,6 +11,17 @@ const postCategory = async (request, response, next) => {
   }
 };
 
+const getAll = async (_request, response, next) => {
+  try {
+    const getCategories = await categoryService.getAllCategories();
+
+    return response.status(getCategories.status).json(getCategories.message);
+  } catch (err) {
+    return next(err);
+  }
+};
+
 module.exports = {
   postCategory,
+  getAll,
 };
