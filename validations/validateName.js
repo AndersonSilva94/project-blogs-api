@@ -9,6 +9,8 @@ const validateName = (name) => {
   const { error } = schema.validate({ name });
 
   if (error) throw invalidName;
+
+  return name;
 };
 
 module.exports = validateName;
