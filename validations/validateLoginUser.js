@@ -7,9 +7,7 @@ const validateLoginUser = async (obj) => {
 
   await validateEmail(email);
   await validatePassword(password);
-  const user = await verifyUserExists({ email, password });
-
-  return user;
+  await verifyUserExists({ email, password });
 };
 
 module.exports = validateLoginUser;

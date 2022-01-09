@@ -4,23 +4,20 @@ const { User } = require('../models');
 const { tokenUndefined, invalidToken } = require('../utils/messages');
 
 const verifyToken = async (request, response, next) => {
-  try {
-    const token = request.headers.authorization;
+  const token = request.headers.authorization;
 
-    if (!token) throw tokenUndefined;
+  try {
+    if (token === undefined || token === '') throw tokenUndefined;
 
     const payload = jwt.verify(token, secret);
 
-    const user = await User.findOne({ where: { email: payload.email } });
+    const { data } = await User.findOne({ where: { email: payload.email } });
 
-    if (!user) throw invalidToken;
-
-    const { password, ...userWithoutPassword } = user;
-
-    request.user = userWithoutPassword;
+    request.user = data;
     next();
   } catch (err) {
-    return response.status(500).json({ message: err.message });
+    if (err.status) return response.status(err.status).json({ message: err.message });
+    return response.status(invalidToken.status).json({ message: invalidToken.message });
   }
 };
 

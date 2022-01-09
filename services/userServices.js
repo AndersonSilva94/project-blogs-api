@@ -12,7 +12,11 @@ const createUser = async (obj) => {
 };
 
 const getAllUsers = async () => {
-  const getUsers = await User.findAll();
+  const getUsers = await User.findAll({
+    attributes: {
+      exclude: ['password'],
+    },
+  });
 
   return { status: OK_STATUS, message: getUsers };
 };
