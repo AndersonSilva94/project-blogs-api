@@ -6,8 +6,6 @@ const validatePassword = (password) => {
   if (password.length === 0) throw emptyPassword;
 
   if (password.length !== 6) throw invalidLengthPassword;
-
-  return password;
 };
 
 module.exports = validatePassword;

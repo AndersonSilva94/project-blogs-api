@@ -5,8 +5,6 @@ const verifyEmailAlreadyExists = async (email) => {
   const existsEmail = await User.findOne({ where: { email } });
 
   if (existsEmail) throw userExists;
-
-  return email;
 };
 
 module.exports = verifyEmailAlreadyExists;

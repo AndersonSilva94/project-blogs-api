@@ -13,8 +13,6 @@ const validateEmail = (email) => {
   const { error } = schema.validate({ email });
 
   if (error) throw invalidEmail;
-
-  return email;
 };
 
 module.exports = validateEmail;

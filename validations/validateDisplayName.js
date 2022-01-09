@@ -9,8 +9,6 @@ const validateDisplayName = (displayName) => {
   const { error } = schema.validate({ displayName });
 
   if (error) throw invalidDisplayName;
-
-  return displayName;
 };
 
 module.exports = validateDisplayName;
