@@ -7,6 +7,8 @@ const REQUIRED_PASSWORD = '"password" is required';
 const EMPTY_PASSWORD = '"password" is not allowed to be empty';
 const USER_ALREADY_EXISTS = 'User already registered';
 const INVALID_FIELDS = 'Invalid fields';
+const TOKEN_UNDEFINED = 'Token not found';
+const INVALID_TOKEN = 'Expired or invalid token';
 
 module.exports = {
   INVALID_DISPLAY_NAME,
@@ -18,4 +20,6 @@ module.exports = {
   EMPTY_PASSWORD,
   USER_ALREADY_EXISTS,
   INVALID_FIELDS,
+  TOKEN_UNDEFINED,
+  INVALID_TOKEN,
 };
