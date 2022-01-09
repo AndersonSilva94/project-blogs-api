@@ -10,6 +10,7 @@ const INVALID_FIELDS = 'Invalid fields';
 const TOKEN_UNDEFINED = 'Token not found';
 const INVALID_TOKEN = 'Expired or invalid token';
 const USER_NOT_EXISTS = 'User does not exist';
+const INVALID_NAME = '"name" is required';
 
 module.exports = {
   INVALID_DISPLAY_NAME,
@@ -24,4 +25,5 @@ module.exports = {
   TOKEN_UNDEFINED,
   INVALID_TOKEN,
   USER_NOT_EXISTS,
+  INVALID_NAME,
 };
