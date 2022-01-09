@@ -7,6 +7,7 @@ const {
   REQUIRED_PASSWORD,
   EMPTY_PASSWORD,
   USER_ALREADY_EXISTS,
+  INVALID_FIELDS,
 } = require('./errorMessages');
 const { BAD_REQUEST, CONFLICT } = require('./statusErrors');
 
@@ -18,6 +19,7 @@ const invalidLengthPassword = { status: BAD_REQUEST, message: INVALID_LENGTH_PAS
 const requiredPassword = { status: BAD_REQUEST, message: REQUIRED_PASSWORD };
 const emptyPassword = { status: BAD_REQUEST, message: EMPTY_PASSWORD };
 const userExists = { status: CONFLICT, message: USER_ALREADY_EXISTS };
+const invalidFields = { status: BAD_REQUEST, message: INVALID_FIELDS };
 
 module.exports = {
   invalidDisplayName,
@@ -28,4 +30,5 @@ module.exports = {
   requiredPassword,
   emptyPassword,
   userExists,
+  invalidFields,
 };

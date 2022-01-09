@@ -6,6 +6,7 @@ const INVALID_LENGTH_PASSWORD = '"password" length must be 6 characters long';
 const REQUIRED_PASSWORD = '"password" is required';
 const EMPTY_PASSWORD = '"password" is not allowed to be empty';
 const USER_ALREADY_EXISTS = 'User already registered';
+const INVALID_FIELDS = 'Invalid fields';
 
 module.exports = {
   INVALID_DISPLAY_NAME,
@@ -16,4 +17,5 @@ module.exports = {
   REQUIRED_PASSWORD,
   EMPTY_PASSWORD,
   USER_ALREADY_EXISTS,
+  INVALID_FIELDS,
 };
