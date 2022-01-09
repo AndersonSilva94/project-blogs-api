@@ -20,7 +20,19 @@ const getAll = async (_request, response, next) => {
   }
 };
 
+const getById = async (request, response, next) => {
+  try {
+    const { id } = request.params;
+    const getUser = await userServices.getUserById(id);
+
+    return response.status(getUser.status).json(getUser.message);
+  } catch (err) {
+    return next(err);
+  }
+};
+
 module.exports = {
   postUser,
   getAll,
+  getById,
 };
