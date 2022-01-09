@@ -2,7 +2,7 @@ const Joi = require('joi');
 const { invalidEmail, requiredEmail, emptyEmail } = require('../utils/messages');
 
 const validateEmail = (email) => {
-  if (!email) throw requiredEmail;
+  if (email === undefined) throw requiredEmail;
 
   if (email.length === 0) throw emptyEmail;
 
