@@ -10,8 +10,9 @@ const {
   INVALID_FIELDS,
   TOKEN_UNDEFINED,
   INVALID_TOKEN,
+  USER_NOT_EXISTS,
 } = require('./errorMessages');
-const { BAD_REQUEST, CONFLICT, UNAUTHORIZED } = require('./statusErrors');
+const { BAD_REQUEST, CONFLICT, UNAUTHORIZED, NOT_FOUND } = require('./statusErrors');
 
 const invalidDisplayName = { status: BAD_REQUEST, message: INVALID_DISPLAY_NAME };
 const invalidEmail = { status: BAD_REQUEST, message: INVALID_EMAIL };
@@ -24,6 +25,7 @@ const userExists = { status: CONFLICT, message: USER_ALREADY_EXISTS };
 const invalidFields = { status: BAD_REQUEST, message: INVALID_FIELDS };
 const tokenUndefined = { status: UNAUTHORIZED, message: TOKEN_UNDEFINED };
 const invalidToken = { status: UNAUTHORIZED, message: INVALID_TOKEN };
+const userNotExists = { status: NOT_FOUND, message: USER_NOT_EXISTS };
 
 module.exports = {
   invalidDisplayName,
@@ -37,4 +39,5 @@ module.exports = {
   invalidFields,
   tokenUndefined,
   invalidToken,
+  userNotExists,
 };

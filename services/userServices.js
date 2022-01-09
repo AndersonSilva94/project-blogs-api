@@ -1,5 +1,6 @@
 const { User } = require('../models');
 const generateToken = require('../utils/generateToken');
+const { userNotExists } = require('../utils/messages');
 const { CREATED, OK_STATUS } = require('../utils/statusSuccess');
 const { validateCreateUser } = require('../validations');
 
@@ -21,7 +22,21 @@ const getAllUsers = async () => {
   return { status: OK_STATUS, message: getUsers };
 };
 
+const getUserById = async (id) => {
+  const findUser = await User.findOne({
+    where: { id },
+    attributes: {
+      exclude: ['password'],
+    },
+  });
+
+  if (!findUser) throw userNotExists;
+
+  return { status: OK_STATUS, message: findUser };
+};
+
 module.exports = {
   createUser,
   getAllUsers,
+  getUserById,
 };

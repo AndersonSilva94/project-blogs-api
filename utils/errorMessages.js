@@ -9,6 +9,7 @@ const USER_ALREADY_EXISTS = 'User already registered';
 const INVALID_FIELDS = 'Invalid fields';
 const TOKEN_UNDEFINED = 'Token not found';
 const INVALID_TOKEN = 'Expired or invalid token';
+const USER_NOT_EXISTS = 'User does not exist';
 
 module.exports = {
   INVALID_DISPLAY_NAME,
@@ -22,4 +23,5 @@ module.exports = {
   INVALID_FIELDS,
   TOKEN_UNDEFINED,
   INVALID_TOKEN,
+  USER_NOT_EXISTS,
 };
