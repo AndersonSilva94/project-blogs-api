@@ -1,19 +1,19 @@
 const { CREATED } = require('../utils/statusSuccess');
 const { validateCreatePost } = require('../validations');
-const { BlogPost } = require('../models');
+const { BlogPost, PostCategory } = require('../models');
 
 const createPost = async (userId, obj) => {
   const validatePost = await validateCreatePost(obj);
 
   // console.log(userId);
-  const { title, content } = validatePost;
+  const { title, content, categoryIds } = validatePost;
 
-  const { id } = await BlogPost.create({ title, content, userId });
+  const { id: postId } = await BlogPost.create({ title, content, userId });
 
-  // console.log(id);
+  categoryIds.forEach(async (categoryId) => PostCategory.create({ postId, categoryId }));
 
   const newPost = await BlogPost.findOne({
-    where: { id },
+    where: { id: postId },
     attributes: {
       exclude: ['published', 'updated'],
     },
