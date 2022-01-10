@@ -11,6 +11,10 @@ const TOKEN_UNDEFINED = 'Token not found';
 const INVALID_TOKEN = 'Expired or invalid token';
 const USER_NOT_EXISTS = 'User does not exist';
 const INVALID_NAME = '"name" is required';
+const INVALID_TITLE = '"title" is required';
+const INVALID_CONTENT = '"content" is required';
+const INVALID_CATEGORY_ID = '"categoryId" is required';
+const CATEGORY_ID_NOT_EXISTS = '"categoryIds" not found';
 
 module.exports = {
   INVALID_DISPLAY_NAME,
@@ -26,4 +30,8 @@ module.exports = {
   INVALID_TOKEN,
   USER_NOT_EXISTS,
   INVALID_NAME,
+  INVALID_TITLE,
+  INVALID_CONTENT,
+  INVALID_CATEGORY_ID,
+  CATEGORY_ID_NOT_EXISTS,
 };

@@ -12,6 +12,10 @@ const {
   INVALID_TOKEN,
   USER_NOT_EXISTS,
   INVALID_NAME,
+  INVALID_TITLE,
+  INVALID_CONTENT,
+  INVALID_CATEGORY_ID,
+  CATEGORY_ID_NOT_EXISTS,
 } = require('./errorMessages');
 const { BAD_REQUEST, CONFLICT, UNAUTHORIZED, NOT_FOUND } = require('./statusErrors');
 
@@ -28,6 +32,10 @@ const tokenUndefined = { status: UNAUTHORIZED, message: TOKEN_UNDEFINED };
 const invalidToken = { status: UNAUTHORIZED, message: INVALID_TOKEN };
 const userNotExists = { status: NOT_FOUND, message: USER_NOT_EXISTS };
 const invalidName = { status: BAD_REQUEST, message: INVALID_NAME };
+const invalidTitle = { status: BAD_REQUEST, message: INVALID_TITLE };
+const invalidContent = { status: BAD_REQUEST, message: INVALID_CONTENT };
+const invalidCategoryId = { status: BAD_REQUEST, message: INVALID_CATEGORY_ID };
+const categoryIdsNotExists = { status: BAD_REQUEST, message: CATEGORY_ID_NOT_EXISTS };
 
 module.exports = {
   invalidDisplayName,
@@ -43,4 +51,8 @@ module.exports = {
   invalidToken,
   userNotExists,
   invalidName,
+  invalidTitle,
+  invalidContent,
+  invalidCategoryId,
+  categoryIdsNotExists,
 };
