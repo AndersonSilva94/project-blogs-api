@@ -12,6 +12,17 @@ const postUser = async (request, response, next) => {
   }
 };
 
+const getAll = async (_request, response, next) => {
+  try {
+    const getPosts = await postService.getAllPosts();
+
+    return response.status(getPosts.status).json(getPosts.message);
+  } catch (err) {
+    return next(err);
+  }
+};
+
 module.exports = {
   postUser,
+  getAll,
 };
