@@ -4,7 +4,6 @@ module.exports = {
   up: async (queryInterface, Sequelize) => {
     const AddUserId = queryInterface.addColumn('BlogPosts', 'userId', {
       type: Sequelize.INTEGER,
-      allowNull: false,
       references: {
         model: 'Users',
         key: 'id',

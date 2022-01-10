@@ -11,7 +11,8 @@ const verifyToken = async (request, response, next) => {
 
     const payload = jwt.verify(token, secret);
 
-    const { data } = await User.findOne({ where: { email: payload.email } });
+    const { dataValues: { password, ...data } } = await User
+      .findOne({ where: { email: payload.email } });
 
     request.user = data;
     next();

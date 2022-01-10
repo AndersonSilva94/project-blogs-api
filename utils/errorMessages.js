@@ -13,7 +13,7 @@ const USER_NOT_EXISTS = 'User does not exist';
 const INVALID_NAME = '"name" is required';
 const INVALID_TITLE = '"title" is required';
 const INVALID_CONTENT = '"content" is required';
-const INVALID_CATEGORY_ID = '"categoryId" is required';
+const INVALID_CATEGORY_ID = '"categoryIds" is required';
 const CATEGORY_ID_NOT_EXISTS = '"categoryIds" not found';
 
 module.exports = {

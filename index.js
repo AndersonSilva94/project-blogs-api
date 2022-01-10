@@ -1,5 +1,5 @@
 const express = require('express');
-const { usersRoute, loginRoute, categoryRoute } = require('./routes');
+const { usersRoute, loginRoute, categoryRoute, postRoute } = require('./routes');
 
 const app = express();
 
@@ -8,6 +8,7 @@ app.use(express.json());
 app.use('/user', usersRoute);
 app.use('/login', loginRoute);
 app.use('/categories', categoryRoute);
+app.use('/post', postRoute);
 
 app.use((err, _req, res, _next) => {
   if (err.status) return res.status(err.status).json({ message: err.message });

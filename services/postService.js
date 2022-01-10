@@ -1,15 +1,25 @@
-const { OK_STATUS } = require('../utils/statusSuccess');
+const { CREATED } = require('../utils/statusSuccess');
 const { validateCreatePost } = require('../validations');
 const { BlogPost } = require('../models');
 
-const createPost = async (id, obj) => {
+const createPost = async (userId, obj) => {
   const validatePost = await validateCreatePost(obj);
 
+  // console.log(userId);
   const { title, content } = validatePost;
 
-  const newPost = await BlogPost.create({ title, content, userId: id });
+  const { id } = await BlogPost.create({ title, content, userId });
 
-  return { status: OK_STATUS, message: newPost };
+  // console.log(id);
+
+  const newPost = await BlogPost.findOne({
+    where: { id },
+    attributes: {
+      exclude: ['published', 'updated'],
+    },
+  });
+
+  return { status: CREATED, message: newPost };
 };
 
 module.exports = {
