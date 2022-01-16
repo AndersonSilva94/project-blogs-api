@@ -22,7 +22,19 @@ const getAll = async (_request, response, next) => {
   }
 };
 
+const getById = async (request, response, next) => {
+  try {
+    const { id } = request.params;
+    const getPost = await postService.getPostById(id);
+
+    return response.status(getPost.status).json(getPost.message);
+  } catch (err) {
+    return next(err);
+  }
+};
+
 module.exports = {
   postUser,
   getAll,
+  getById,
 };
