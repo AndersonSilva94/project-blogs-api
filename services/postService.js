@@ -1,5 +1,5 @@
 const { CREATED, OK_STATUS } = require('../utils/statusSuccess');
-const { validateCreatePost } = require('../validations');
+const { validateCreatePost, verifyPostExists } = require('../validations');
 const { BlogPost, PostCategory, User, Category } = require('../models');
 
 const createPost = async (userId, obj) => {
@@ -44,7 +44,22 @@ const getAllPosts = async () => {
   return { status: OK_STATUS, message: getPosts };
 };
 
+const getPostById = async (postId) => {
+  await verifyPostExists(postId);
+
+  const getPost = await BlogPost.findOne({
+    where: { id: postId },
+    include: [
+      { model: User, as: 'user', attributes: { exclude: ['password'] } },
+      { model: Category, as: 'categories', through: { attributes: [] } },
+    ],
+  });
+
+  return { status: OK_STATUS, message: getPost };
+};
+
 module.exports = {
   createPost,
   getAllPosts,
+  getPostById,
 };
