@@ -1,5 +1,11 @@
 const { CREATED, OK_STATUS } = require('../utils/statusSuccess');
-const { validateCreatePost, verifyPostExists } = require('../validations');
+const {
+  validateCreatePost,
+  verifyPostExists,
+  validateUserPost,
+  validateTitle,
+  validateContent,
+} = require('../validations');
 const { BlogPost, PostCategory, User, Category } = require('../models');
 
 const createPost = async (userId, obj) => {
@@ -58,8 +64,34 @@ const getPostById = async (postId) => {
   return { status: OK_STATUS, message: getPost };
 };
 
+const editPost = async (idUser, postId, obj) => {
+  await validateUserPost(idUser, postId);
+
+  const { title, content } = obj;
+
+  await validateTitle(title);
+  await validateContent(content);
+  await BlogPost.update(
+    { title, content },
+    { where: { id: postId } },
+  );
+
+  const findPost = await BlogPost.findOne({
+    where: { id: postId },
+    attributes: {
+      exclude: ['id', 'published', 'updated'],
+    },
+    include: [
+      { model: Category, as: 'categories', through: { attributes: [] } },
+    ],
+  });
+
+  return { status: OK_STATUS, message: findPost };
+};
+
 module.exports = {
   createPost,
   getAllPosts,
   getPostById,
+  editPost,
 };

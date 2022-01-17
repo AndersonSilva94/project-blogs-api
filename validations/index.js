@@ -4,6 +4,8 @@ const validateName = require('./validateName');
 const validateCreatePost = require('./validateCreatePost');
 const verifyPostExists = require('./verifyPostExists');
 const validateUserPost = require('./validateUserPost');
+const validateTitle = require('./validateTitle');
+const validateContent = require('./validateContent');
 
 module.exports = {
   validateCreateUser,
@@ -12,4 +14,6 @@ module.exports = {
   validateCreatePost,
   verifyPostExists,
   validateUserPost,
+  validateTitle,
+  validateContent,
 };
