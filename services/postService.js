@@ -89,7 +89,7 @@ const editPost = async (userId, postId, obj) => {
   return { status: OK_STATUS, message: findPost };
 };
 
-const deletePost = async (userId, postId) => {
+const deletePostById = async (userId, postId) => {
   await validateUserPost(userId, postId);
   await verifyPostExists(postId);
 
@@ -105,5 +105,5 @@ module.exports = {
   getAllPosts,
   getPostById,
   editPost,
-  deletePost,
+  deletePostById,
 };
