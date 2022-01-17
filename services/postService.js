@@ -100,10 +100,36 @@ const deletePostById = async (userId, postId) => {
   return { status: NO_CONTENT };
 };
 
+const searchByQuery = async (query) => {
+  let response;
+
+  if (query === '') {
+    response = await BlogPost.findAll({
+      include: [
+        { model: User, as: 'user', attributes: { exclude: ['password'] } },
+        { model: Category, as: 'categories', through: { attributes: [] } },
+      ],
+    });
+  }
+
+  response = await BlogPost.findAll({
+    where: { title: query, content: query },
+    include: [
+      { model: User, as: 'user', attributes: { exclude: ['password'] } },
+      { model: Category, as: 'categories', through: { attributes: [] } },
+    ],
+  });
+
+  if (!response) return { status: OK_STATUS, message: [] };
+
+  return { status: OK_STATUS, message: response };
+};
+
 module.exports = {
   createPost,
   getAllPosts,
   getPostById,
   editPost,
   deletePostById,
+  searchByQuery,
 };
