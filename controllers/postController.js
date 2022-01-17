@@ -1,4 +1,5 @@
 const { postService } = require('../services');
+const { categoriesNotEdited } = require('../utils/messages');
 
 const postUser = async (request, response, next) => {
   // console.log(request.user);
@@ -33,8 +34,23 @@ const getById = async (request, response, next) => {
   }
 };
 
+const updatePost = async (request, response, next) => {
+  try {
+    if (request.body.categoryIds) throw categoriesNotEdited;
+
+    const { id: userId } = request.user;
+    const { id: postId } = request.params;
+    const edit = await postService.editPost(userId, postId, request.body);
+
+    return response.status(edit.status).json(edit.message);
+  } catch (err) {
+    return next(err);
+  }
+};
+
 module.exports = {
   postUser,
   getAll,
   getById,
+  updatePost,
 };

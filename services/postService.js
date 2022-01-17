@@ -64,8 +64,8 @@ const getPostById = async (postId) => {
   return { status: OK_STATUS, message: getPost };
 };
 
-const editPost = async (idUser, postId, obj) => {
-  await validateUserPost(idUser, postId);
+const editPost = async (userId, postId, obj) => {
+  await validateUserPost(userId, postId);
 
   const { title, content } = obj;
 
