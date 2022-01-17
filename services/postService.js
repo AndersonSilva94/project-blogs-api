@@ -1,4 +1,4 @@
-const { CREATED, OK_STATUS } = require('../utils/statusSuccess');
+const { CREATED, OK_STATUS, NO_CONTENT } = require('../utils/statusSuccess');
 const {
   validateCreatePost,
   verifyPostExists,
@@ -89,9 +89,21 @@ const editPost = async (userId, postId, obj) => {
   return { status: OK_STATUS, message: findPost };
 };
 
+const deletePost = async (userId, postId) => {
+  await validateUserPost(userId, postId);
+  await verifyPostExists(postId);
+
+  await BlogPost.destroy({
+    where: { id: postId },
+  });
+
+  return { status: NO_CONTENT };
+};
+
 module.exports = {
   createPost,
   getAllPosts,
   getPostById,
   editPost,
+  deletePost,
 };
