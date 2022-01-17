@@ -17,6 +17,8 @@ const {
   INVALID_CATEGORY_ID,
   CATEGORY_ID_NOT_EXISTS,
   POST_NOT_EXISTS,
+  CATEGORIES_NOT_EDITED,
+  UNAUTHORIZED_USER,
 } = require('./errorMessages');
 const { BAD_REQUEST, CONFLICT, UNAUTHORIZED, NOT_FOUND } = require('./statusErrors');
 
@@ -38,6 +40,8 @@ const invalidContent = { status: BAD_REQUEST, message: INVALID_CONTENT };
 const invalidCategoryId = { status: BAD_REQUEST, message: INVALID_CATEGORY_ID };
 const categoryIdsNotExists = { status: BAD_REQUEST, message: CATEGORY_ID_NOT_EXISTS };
 const postNotExists = { status: NOT_FOUND, message: POST_NOT_EXISTS };
+const categoriesNotEdited = { status: BAD_REQUEST, message: CATEGORIES_NOT_EDITED };
+const unauthorizedUser = { status: UNAUTHORIZED, message: UNAUTHORIZED_USER };
 
 module.exports = {
   invalidDisplayName,
@@ -58,4 +62,6 @@ module.exports = {
   invalidCategoryId,
   categoryIdsNotExists,
   postNotExists,
+  categoriesNotEdited,
+  unauthorizedUser,
 };

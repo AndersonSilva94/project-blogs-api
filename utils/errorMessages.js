@@ -16,6 +16,8 @@ const INVALID_CONTENT = '"content" is required';
 const INVALID_CATEGORY_ID = '"categoryIds" is required';
 const CATEGORY_ID_NOT_EXISTS = '"categoryIds" not found';
 const POST_NOT_EXISTS = 'Post does not exist';
+const CATEGORIES_NOT_EDITED = 'Categories cannot be edited';
+const UNAUTHORIZED_USER = 'Unauthorized user';
 
 module.exports = {
   INVALID_DISPLAY_NAME,
@@ -36,4 +38,6 @@ module.exports = {
   INVALID_CATEGORY_ID,
   CATEGORY_ID_NOT_EXISTS,
   POST_NOT_EXISTS,
+  CATEGORIES_NOT_EDITED,
+  UNAUTHORIZED_USER,
 };
