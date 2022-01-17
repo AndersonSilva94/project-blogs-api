@@ -60,10 +60,22 @@ const deletePost = async (request, response, next) => {
   }
 };
 
+const searchQuery = async (request, response, next) => {
+  try {
+    const { q } = request.query;
+    const search = await postService.searchByQuery(q);
+
+    return response.status(search.status).json(search.message);
+  } catch (err) {
+    return next(err);
+  }
+};
+
 module.exports = {
   postUser,
   getAll,
   getById,
   updatePost,
   deletePost,
+  searchQuery,
 };
