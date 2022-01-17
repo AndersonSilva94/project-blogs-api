@@ -1,7 +1,7 @@
 const { User } = require('../models');
 const generateToken = require('../utils/generateToken');
 const { userNotExists } = require('../utils/messages');
-const { CREATED, OK_STATUS } = require('../utils/statusSuccess');
+const { CREATED, OK_STATUS, NO_CONTENT } = require('../utils/statusSuccess');
 const { validateCreateUser } = require('../validations');
 
 const createUser = async (obj) => {
@@ -35,8 +35,17 @@ const getUserById = async (id) => {
   return { status: OK_STATUS, message: findUser };
 };
 
+const deleteUserById = async (id) => {
+  await User.destroy({
+    where: { id },
+  });
+
+  return { status: NO_CONTENT };
+};
+
 module.exports = {
   createUser,
   getAllUsers,
   getUserById,
+  deleteUserById,
 };
