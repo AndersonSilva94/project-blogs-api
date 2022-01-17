@@ -90,8 +90,8 @@ const editPost = async (userId, postId, obj) => {
 };
 
 const deletePostById = async (userId, postId) => {
-  await validateUserPost(userId, postId);
   await verifyPostExists(postId);
+  await validateUserPost(userId, postId);
 
   await BlogPost.destroy({
     where: { id: postId },
