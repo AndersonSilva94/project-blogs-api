@@ -1,3 +1,4 @@
+const { Op } = require('sequelize');
 const { CREATED, OK_STATUS, NO_CONTENT } = require('../utils/statusSuccess');
 const {
   validateCreatePost,
@@ -100,29 +101,30 @@ const deletePostById = async (userId, postId) => {
   return { status: NO_CONTENT };
 };
 
+// Ajuda de Marcelo Maurício (Tchelo) - Turma A na lógica para buscar os elementos pela query
 const searchByQuery = async (query) => {
-  let response;
-
-  if (query === '') {
-    response = await BlogPost.findAll({
-      include: [
-        { model: User, as: 'user', attributes: { exclude: ['password'] } },
-        { model: Category, as: 'categories', through: { attributes: [] } },
-      ],
-    });
+  if (!query) {
+    const getAll = await getAllPosts();
+    return getAll;
   }
 
-  response = await BlogPost.findAll({
-    where: { title: query, content: query },
+  // Operador Op encontrado no link https://sequelize.org/master/manual/model-querying-basics.html
+  const findBySearch = await BlogPost.findAll({
+    where: {
+      [Op.or]: [
+        { title: { [Op.like]: `%${query}%` } },
+        { content: { [Op.like]: `%${query}%` } },
+      ],
+    },
     include: [
       { model: User, as: 'user', attributes: { exclude: ['password'] } },
       { model: Category, as: 'categories', through: { attributes: [] } },
     ],
   });
 
-  if (!response) return { status: OK_STATUS, message: [] };
+  if (!findBySearch) return { status: OK_STATUS, message: [] };
 
-  return { status: OK_STATUS, message: response };
+  return { status: OK_STATUS, message: findBySearch };
 };
 
 module.exports = {
