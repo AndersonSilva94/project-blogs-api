@@ -1,7 +1,7 @@
 ![CAPA LINKEDIN_PERFIL PESSOAL03](https://user-images.githubusercontent.com/52717632/123512102-9546b200-d653-11eb-8b6c-f6c1dd19143e.png)
 # Projeto Blogs API :computer:
 
-## Objetivos a serem alcançados no decorrer da construção do projeto:Habilidades 
+## Objetivos a serem alcançados no decorrer da construção do projeto
 
 Nesse projeto, você vai construir um back-end usando `ORM` com o pacote `sequelize` do `npm`, e será capaz de:
  - Criar e associar tabelas usando `models` do `sequelize`
@@ -27,7 +27,7 @@ Nesse projeto, você vai construir um back-end usando `ORM` com o pacote `sequel
   $ npm install
   ```
 
-4. Siga as instruções para configurar o sequelize [aqui](##-Antes-de-começar)
+4. Siga as instruções para configurar o sequelize no tópico 'Requisitos do projeto - Antes de começar' 
 
 5. Rode o sequelize
   ```bash
